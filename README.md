@@ -55,12 +55,15 @@ This setup closely simulates real-world SRE/DevOps monitoring systems used in pr
 ## PromQL Queries Used
 
 ### CPU Usage
+
 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[1m])) * 100)
 
 ### Memory Usage
+
 (node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes * 100
 
 ### Disk Usage
+
 (node_filesystem_size_bytes - node_filesystem_free_bytes) / node_filesystem_size_bytes * 100
 
 ---
