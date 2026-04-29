@@ -1,0 +1,36 @@
+# Setup Steps
+
+## 1. Launch EC2 Instance
+
+* Use Ubuntu (t2.micro)
+* Open ports: 22, 9090, 3000, 9100
+
+## 2. Install Node Exporter
+
+wget https://github.com/prometheus/node_exporter/releases/download/v1.7.0/node_exporter-1.7.0.linux-amd64.tar.gz
+tar xvf node_exporter-1.7.0.linux-amd64.tar.gz
+./node_exporter &
+
+## 3. Install Prometheus
+
+wget https://github.com/prometheus/prometheus/releases/download/v2.50.0/prometheus-2.50.0.linux-amd64.tar.gz
+tar xvf prometheus-2.50.0.linux-amd64.tar.gz
+
+Edit prometheus.yml:
+targets: ['172.31.44.143:9100']
+
+## 4. Start Prometheus
+
+./prometheus --config.file=prometheus.yml
+
+## 5. Install Grafana
+
+sudo apt-get install -y grafana
+sudo systemctl start grafana-server
+
+## 6. Configure Grafana
+
+* Add Prometheus as data source
+* URL: http://localhost:9090
+* Create dashboards
+* Add alert rules
