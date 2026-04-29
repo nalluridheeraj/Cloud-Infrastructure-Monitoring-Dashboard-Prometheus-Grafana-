@@ -6,7 +6,8 @@ This project builds an automated monitoring and alerting system for cloud infras
 
 ## Overview
 
-Built a monitoring system on AWS EC2 using Prometheus and Grafana.
+Built a monitoring system on AWS EC2 using Prometheus and Grafana. Implemented alerting for CPU > 80% with email notification. This project simulates real-world SRE monitoring systems used in production environments.
+
 
 ## Features
 
@@ -33,7 +34,7 @@ CPU:
 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[1m])) * 100)
 
 
-This project simulates real-world SRE monitoring systems used in production environments.
+
 Memory:
 (node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes * 100
 
